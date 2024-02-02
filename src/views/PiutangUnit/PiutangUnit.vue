@@ -9,7 +9,7 @@
       :class="{ 'mt-2 mb-8 mx-2': sm || md, 'mt-4 mb-8 mx-8': xl || lg }"
     >
       <v-row class="mb-4">
-        <v-col cols="12" md="7">
+        <v-col cols="12" xs="12" md="7">
           <v-text-field
             v-model="search"
             label="Search"
@@ -20,14 +20,19 @@
             hide-details
           ></v-text-field>
         </v-col>
-        <v-col cols="12" md="5" class="text-end">
+        <v-col
+          cols="12"
+          xs="12"
+          md="5"
+          :class="{ 'text-end': xl || lg, 'text-left': xs || sm }"
+        >
           <v-btn
             :disabled="isLoading"
             append-icon="mdi-refresh"
             text="Refresh"
             variant="flat"
             color="#5865f2"
-            class="mr-2"
+            class="mr-2 mb-2"
             @click="refreshTable"
           ></v-btn>
           <v-btn
@@ -35,7 +40,7 @@
             text="Export"
             variant="flat"
             color="#FF1744"
-            class="mr-2"
+            class="mr-2 mb-2"
             @click="selected.length > 0 ? exportFile() : (snackbar = true)"
           >
           </v-btn>
@@ -44,6 +49,7 @@
             text="Bayar"
             variant="flat"
             color="#558B2F"
+            class=""
             @click="
               selected.length > 0 ? (paymentDialog = true) : (snackbar = true)
             "
